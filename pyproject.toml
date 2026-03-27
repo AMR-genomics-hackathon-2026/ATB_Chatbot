@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ATB-Chat"
+version = "0.1.0b0"
+description = "ATB-Chat is a local offline AI assistant for AllTheBacteria"
+readme = "README.md"
+authors = [
+    {name = "Qianxuan(Sean) She", email = "sheq@chop.edu"},
+    {name = "Ahmed M Moustafa", email = "moustafaam@chop.edu"}
+]
+dependencies = [
+    "langchain>=1.2.10",
+    "langchain-chroma >= 1.1.0",
+    "langchain-community>=0.4.1",
+    "langchain-ollama>=1.0.1",
+    "langchain-text-splitters>=1.1.0",
+    "chromadb>=1.5.0",
+    "ollama>=0.6.1",
+    "unstructured>=0.20.2",
+    "flask>=3.1.2",
+    "pymupdf>=1.27.2.2",
+]
+
+[project.scripts]
+atb-chat = "atb_chat.cli:main"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["atb_chat*"]
+
+[tool.setuptools.package-data]
+"atb_chat" = ["frontend/static/**/*", "guides/**/*"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["__pycache__", "*.pyc", "*.pyo"]
